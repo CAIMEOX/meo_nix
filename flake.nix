@@ -39,7 +39,7 @@
         system = systemSettings.system;
         config = {
           allowUnfree = true;
-          allowUnfreePredicate = (_: true);
+          allowUnfreePredicate = true;
         };
         overlays = [ ];
       });

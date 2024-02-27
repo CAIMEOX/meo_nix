@@ -3,6 +3,7 @@
 {
   imports = [
     ./zone
+    ./virtualisation
     ./wm/fonts.nix
     ./wm/dbus.nix
     ./wm/gnome.nix
