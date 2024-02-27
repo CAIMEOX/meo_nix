@@ -70,7 +70,7 @@
     isNormalUser = true;
     description = userSettings.name;
     packages = [];
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel", "docker" ];
   };
 
 
