@@ -13,5 +13,6 @@
     eza
     gparted
     fzf
+    zoxide
   ];
 }

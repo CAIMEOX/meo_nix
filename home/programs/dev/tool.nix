@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   home.packages = with pkgs; [
     tokei
     docker
@@ -10,6 +10,8 @@
     nixpkgs-fmt
     gnumake
     nil
+    cppcheck
+    clang-tools
     nodePackages.pnpm
     ocamlPackages.findlib
     ocamlPackages.ocaml-lsp

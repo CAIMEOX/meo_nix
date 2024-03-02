@@ -27,6 +27,7 @@
           newline = "↴";
           tab = "⇥";
         };
+        bufferline = "always";
       };
 
       keys.normal.space.u = {

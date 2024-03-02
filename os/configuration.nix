@@ -41,7 +41,6 @@
    allowedTCPPortRanges = [ {from = 5000; to = 6000; } ];
   };
 
-
   nix.settings = { 
     experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
@@ -70,7 +69,7 @@
     isNormalUser = true;
     description = userSettings.name;
     packages = [];
-    extraGroups = [ "networkmanager" "wheel", "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
 
