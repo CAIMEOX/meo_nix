@@ -1,4 +1,4 @@
-{ config, pkgs, lib, systemSettings, userSettings, ... }:
+{ pkgs, systemSettings, userSettings, ... }:
 
 {
   imports = [
@@ -11,13 +11,13 @@
   ];
 
   # Bootloader.
-  # boot.loader.efi.canTouchEfiVariables = true;
-  # boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
 
   boot.loader.grub.enable = true;
   boot.loader.grub.devices = [ "nodev" ];
-  # boot.loader.grub.efiInstallAsRemovable = true;
+  boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.grub.theme = pkgs.stdenv.mkDerivation {
     pname = "distro-grub-themes";
     version = "3.1";
@@ -85,7 +85,7 @@
           ]
         );
         profile = "export FHS=1";
-        runScript = "bash";
+        runScript = "fish";
         extraOutputsToInstall = [ "dev" ];
       })
     )
@@ -96,13 +96,9 @@
     home-manager
   ];
 
-  #xdg.portal = {
-  #  enable = true;
-  #  extraPortals = [
-  #    pkgs.xdg-desktop-portal
-  #    pkgs.xdg-desktop-portal-gtk
-  #  ];
-  #};
-
+  programs.steam = {
+    enable = true;
+  };
+  
   system.stateVersion = "24.05";
 }

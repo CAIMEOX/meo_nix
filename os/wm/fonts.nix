@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -7,6 +7,8 @@
   fonts = {
     packages = with pkgs; [
       noto-fonts
+      source-han-sans
+      source-han-serif
       noto-fonts-cjk
       noto-fonts-emoji
       nerdfonts

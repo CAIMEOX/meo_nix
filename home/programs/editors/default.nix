@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./neovim
@@ -7,5 +7,6 @@
   home.packages = with pkgs; [
     vscode.fhs
     vim
+    typora
   ];
 }

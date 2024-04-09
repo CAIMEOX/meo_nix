@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   home.packages = with pkgs; [
     elan
     coq
@@ -11,7 +11,10 @@
     ghc
     racket
     nodejs deno
+    rustup
+    go
     texlive.combined.scheme-medium
+    typst
     (agda.withPackages [ agdaPackages.standard-library ])
   ];
 }

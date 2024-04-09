@@ -1,8 +1,9 @@
-{ config, pkgs, ... }:
+{ ... }:
 {
   programs.git = {
     enable = true;
     userName = "CAIMEOX";
-    userEmail = "1853884864@qq.com";
+    userEmail = "38813005+CAIMEOX@users.noreply.github.com";
+    defaultBranch = "main";
   };
 }

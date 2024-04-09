@@ -1,8 +1,7 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 let username = "caimeo";
     homeDirectory = "/home/${username}";
-    configHome = "${homeDirectory}/.config";
 
 in
 {
