@@ -63,6 +63,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   programs.fish.enable = true;
+  programs.nix-ld.enable = true;
   
   users.users.${userSettings.username} = {
     shell = pkgs.fish;

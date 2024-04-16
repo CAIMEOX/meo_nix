@@ -8,5 +8,6 @@
     vscode.fhs
     vim
     typora
+    forester
   ];
 }
