@@ -1,14 +1,7 @@
 {
   description = "Meo NixOS configuration";
 
-  outputs =
-    { self
-    , home-manager
-    , nixpkgs
-    , stylix
-    , forester
-    , ...
-    }@inputs:
+  outputs = { home-manager, nixpkgs, forester, foundry, ... }@inputs:
 
     let
       userSettings = rec {
@@ -22,8 +15,14 @@
         editor = "nvim";
         font = "JetBrains Mono";
         fontPkg = pkgs.noto-fonts;
-        spawnEditor = if (editor == "emacsclient") then "emacsclient -c -a 'emacs'"
-                    else (if ((editor == "vim") || (editor == "nvim") || (editor == "nano")) then "exec " + term + " -e " + editor else editor);
+        spawnEditor = if (editor == "emacsclient") then
+          "emacsclient -c -a 'emacs'"
+        else
+          (if ((editor == "vim") || (editor == "nvim")
+            || (editor == "nano")) then
+            "exec " + term + " -e " + editor
+          else
+            editor);
         browser = "google-chrome-stable";
       };
 
@@ -35,20 +34,19 @@
         locale = "en_US.UTF-8";
       };
 
-      pkgs = (import nixpkgs {
+      pkgs = import nixpkgs {
         inherit forester;
-        system = systemSettings.system;
+        inherit systemSettings;
         config = {
           allowUnfree = true;
           allowUnfreePredicate = true;
         };
         overlays = [ ];
-      });
+      };
 
       lib = nixpkgs.lib;
-      
-    in
-    {
+
+    in {
       nixosConfigurations = {
         system = lib.nixosSystem {
           system = systemSettings.system;
@@ -56,18 +54,18 @@
             ./system/configuration.nix
             home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                inherit userSettings;
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit userSettings; };
+                users.caimeo = import ./home;
               };
-              home-manager.users.caimeo = import ./home;
             }
           ];
           specialArgs = {
             inherit systemSettings;
             inherit userSettings;
-            inherit (inputs) stylix;
+            inherit (inputs) foundry;
             inherit (inputs) forester;
           };
         };
@@ -80,6 +78,7 @@
       url = "sourcehut:~jonsterling/ocaml-forester";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    foundry.url = "github:shazow/foundry.nix/monthly";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
