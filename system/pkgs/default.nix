@@ -1,0 +1,5 @@
+{ forester, ... } : {
+  environment.systemPackages = [
+    forester
+  ];
+}

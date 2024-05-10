@@ -5,6 +5,6 @@
     flameshot
     grim
     mpv
-    aseprite 
+    # aseprite 
   ];
 }
